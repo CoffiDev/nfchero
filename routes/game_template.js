@@ -17,6 +17,11 @@ var game = {
       duration: 3
     },
     {
+      type: 'weapon',
+      damage: 45,
+      duration: 1
+    },
+    {
       type: 'minion',
       health: 4,
       damage: 2

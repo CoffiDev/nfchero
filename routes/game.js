@@ -48,8 +48,9 @@ router.get('/:tag', function(req, res, next) {
     }
 
     if (card.type === 'weapon') {
+      var currentWeapon = game.player.weapon;
       game.player.weapon = card;
-      game.deck[tagNumber] = null;
+      game.deck[tagNumber] = currentWeapon;
     }
   }
 
