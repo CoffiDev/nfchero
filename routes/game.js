@@ -12,7 +12,9 @@ var games = {};
 router.get('/hola', function(req, res, next) {
   destroyGame(req);
   createNewGame(req, res, function() {});
-  res.send(req.game);
+  res.send({
+    game: req.game
+  });
 });
 
 router.use(createNewGame);
