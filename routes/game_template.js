@@ -4,8 +4,13 @@ var game = {
 
   player: {
     health: 10,
-    damage: 1,
-    weapon: null,
+    punch: {
+      type: 'punch',
+      damage: 1,
+      desc: 'Punch',
+      image: 'images/fist.jpg'
+    },
+    weapon: null
   },
 
   desc: 'Estas en un laberinto intentando escapar',
@@ -37,14 +42,24 @@ var game = {
     {
       type: 'minion',
       health: 4,
-      damage: 2,
+      punch: {
+        type: 'punch',
+        damage: 2,
+        desc: 'Punch',
+        image: 'images/fist.jpg'
+      },
       desc: 'Un esqueleto salvaje',
       image: 'images/skull.gif'
     },
     {
       type: 'minion',
       health: 4,
-      damage: 2,
+      punch: {
+        type: 'punch',
+        damage: 2,
+        desc: 'Punch',
+        image: 'images/fist.jpg'
+      },
       desc: 'Un esqueleto armado',
       image: 'images/skull.gif',
       weapon: {
@@ -58,7 +73,12 @@ var game = {
     {
       type: 'boss',
       health: 40,
-      damage: 20,
+      punch: {
+        type: 'punch',
+        damage: 20,
+        desc: 'Punch',
+        image: 'images/fist.jpg'
+      },
       desc: 'Nicolas Cage',
       image: 'images/boss.gif'
     }

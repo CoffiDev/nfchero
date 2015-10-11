@@ -10,7 +10,7 @@ var game_template = require('./game_template');
 var games = {};
 
 router.get('/:key/:tag/:btn?', function(req, res, next) {
-  var btn = req.params.btn || 0;
+  var btnNumber = req.params.btn;
   var game = games[req.params.key];
 
   if (req.params.key === 'null' || (game && game.player.health < 1))  {
@@ -20,47 +20,58 @@ router.get('/:key/:tag/:btn?', function(req, res, next) {
 
   var tagNumber = parseInt(req.params.tag);
   var card = game.deck[tagNumber];
-  var result = {};
+  var result = {key: game.key, card: card, player: game.player};
 
   if (card) {
-    play(result, card, game, tagNumber);
+    play(result, card, game, tagNumber, btnNumber);
   }
 
-  var data = {
-    key: game.key,
-    player: game.player,
-    card: result.card,
-    action: result.action || 'Nada ha pasado',
-    over: !!result.over
-  };
+  result.action = result.action || "Nada ha pasado";
+  result.over = !!result.over;
 
-  console.log("<---", btn);
-  console.log("====================> ", game);
-  console.log("----> ", data);
+  console.log("====>\n", game);
+  console.log("---->\n", result);
 
-  res.send(data);
-
+  res.send(result);
 });
 
-function play(result, card, game, tagNumber) {
+function playAttack(result, card, game, tagNumber, btnNumber) {
+  var player = game.player;
+  result.action = "Estas en combate";
+
+  var playerWeapon = player.weapon && btnNumber === '1' ?
+                        player.weapon : player.punch;
+  attack(game.player, card, playerWeapon);
+
+  if (card.health > 0) {
+    var enemyWeapon = card.punch;
+    if (card.weapon && player.health > card.punch.damage) {
+      enemyWeapon = card.weapon;
+    }
+    attack(card, game.player, enemyWeapon);
+  } else {
+    game.deck[tagNumber] = null;
+  }
+
+  if (player.health < 1) {
+    result.action = "Estas muerto";
+    result.over = true;
+  } else if (card.health < 1){
+    result.action = "Mataste un enemigo";
+  }
+}
+
+function play(result, card, game, tagNumber, btnNumber) {
+  var player = game.player;
   var type = card.type;
-  var action = '';
+  result.choose = false;
 
   if (type === 'minion' || type === 'boss') {
-    action = "Estas en combate";
-
-    attack(game.player, card);
-    if (card.health > 0) {
-      attack(card, game.player);
+    if ( !btnNumber && game.player.weapon) {
+      result.action = "Selecciona tu ataque";
+      result.choose = true;
     } else {
-      game.deck[tagNumber] = null;
-    }
-
-    if (game.player.health < 1) {
-      action = "Te han eliminado";
-      result.over = true;
-    } else if (card.health < 1){
-      action = "Eliminaste un enemigo";
+      playAttack(result, card, game, tagNumber, btnNumber);
     }
   }
 
@@ -70,7 +81,7 @@ function play(result, card, game, tagNumber) {
         game.maxHealth, card.health + game.player.health);
       game.deck[tagNumber] = null;
 
-      action = "Has consumido una posion";
+      result.action = "Consumiste una posion";
     }
   }
 
@@ -79,29 +90,26 @@ function play(result, card, game, tagNumber) {
     game.player.weapon = card;
     game.deck[tagNumber] = currentWeapon;
 
-    action = "Has tomado un arma";
+    result.action = "Tomaste un arma";
     if (currentWeapon) {
-      action = "Cambiaste de arma";
+      result.action = "Cambiaste de arma";
     }
   }
-
-  result.card = card;
-  result.action = action;
 }
 
 
-function attack(attacker, to) {
-  if (attacker.weapon) {
-    attacker.weapon.duration -= 1;
-    to.health -= attacker.weapon.damage;
-    if (attacker.weapon.duration < 1) {
-      attacker.weapon = null;
-    }
-  } else {
-    to.health -= attacker.damage;
-  }
+function attack(attacker, to, weapon) {
+  weapon = weapon || attacker.punch;
 
+  to.health -= weapon.damage;
   to.health = Math.max(0, to.health);
+
+  if (weapon.duration) {
+    weapon.duration -= 1;
+    if (weapon.duration < 1) {
+      attacker[weapon.type] = null;
+    }
+  }
 }
 
 function destroyGame(req) {
