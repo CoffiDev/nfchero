@@ -11,3 +11,12 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+
+/*
+
+	
+	limite de tiempo
+	
+
+*/
