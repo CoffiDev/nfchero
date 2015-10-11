@@ -29,11 +29,22 @@ router.get('/:key/:tag/:btn?', function(req, res, next) {
   result.action = result.action || "You see nothing";
   result.over = !!result.over;
 
+  if (noMonstersHere(game)) {
+    result.win = true;
+  }
+
   console.log("====>\n", game);
   console.log("---->\n", result);
 
   res.send(result);
 });
+
+function noMonstersHere(game) {
+  var hasMonsters = _.some(game.deck, function (card) {
+    return card && (card.type === 'minion' || card.type === 'boss') && card.health > 0;
+  });
+  return !hasMonsters;
+}
 
 function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
