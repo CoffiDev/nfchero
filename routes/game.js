@@ -26,7 +26,7 @@ router.get('/:key/:tag/:btn?', function(req, res, next) {
     play(result, card, game, tagNumber, btnNumber);
   }
 
-  result.action = result.action || "Nada ha pasado";
+  result.action = result.action || "You see nothing";
   result.over = !!result.over;
 
   console.log("====>\n", game);
@@ -42,14 +42,14 @@ function getRandomIntInclusive(min, max) {
 function playAttack(result, card, game, tagNumber, btnNumber) {
   var player = game.player;
 
-  result.action = "Something attacked you";
+  result.action = "Fighting an enemy";
 
   if (game.justAttacked && btnNumber === '2') {
     var escape = getRandomIntInclusive(0, 10);
     if (escape < 3) {
-      result.action = "You could not escape";
+      result.action = "Enemy got you";
     } else {
-      result.action = "You managed to escape";
+      result.action = "Managed to escape";
       result.card = null;
       delete game.justAttacked;
       return;
@@ -73,11 +73,11 @@ function playAttack(result, card, game, tagNumber, btnNumber) {
   }
 
   if (player.health < 1) {
-    result.action = "Estas muerto";
+    result.action = "You are dead!";
     result.over = true;
     result.sound = game.player.usedSound;
   } else if (card.health < 1){
-    result.action = "Mataste un enemigo";
+    result.action = "Killed an enemy";
     result.sound = card.usedSound;
   } else {
     result.canrun = true;
@@ -92,7 +92,7 @@ function play(result, card, game, tagNumber, btnNumber) {
 
   if (type === 'minion' || type === 'boss') {
     if ( !btnNumber && game.player.weapon) {
-      result.action = "Selecciona tu ataque";
+      result.action = "Choose your weapon";
     } else {
       playAttack(result, card, game, tagNumber, btnNumber);
     }
@@ -106,7 +106,7 @@ function play(result, card, game, tagNumber, btnNumber) {
         game.maxHealth, card.health + game.player.health);
       game.deck[tagNumber] = null;
 
-      result.action = "Consumiste una posion";
+      result.action = "Used a healing potion";
       result.sound = card.usedSound;
     }
   }
@@ -116,11 +116,11 @@ function play(result, card, game, tagNumber, btnNumber) {
     game.player.weapon = card;
     game.deck[tagNumber] = currentWeapon;
 
-    result.action = "Tomaste un arma";
+    result.action = "Got a weapon";
     result.sound = card.usedSound;
 
     if (currentWeapon) {
-      result.action = "Cambiaste de arma";
+      result.action = "Dropped your weapon";
       result.card = currentWeapon;
     }
   }
