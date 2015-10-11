@@ -1,7 +1,7 @@
 var game = {
   maxHealth: 10,
   time: 10,
-  desc: 'Estas en un laberinto intentando escapar',
+  desc: 'Try to escape this maze',
   image: 'images/nothing.jpeg',
 
   player: {
@@ -20,7 +20,7 @@ var game = {
     {
       type: 'potion',
       health: 5,
-      desc: 'Un peque;o frasco azul',
+      desc: 'Misterious little bottle',
       image: 'images/potion.png',
       usedSound: 'sounds/potion-drink.wav'
     },
@@ -28,7 +28,7 @@ var game = {
       type: 'weapon',
       damage: 2,
       duration: 3,
-      desc: 'Un garrote',
+      desc: 'Hard wood weapon',
       image: 'images/maze.gif',
       usedSound: 'sounds/mace.wav'
     },
@@ -36,7 +36,7 @@ var game = {
       type: 'weapon',
       damage: 45,
       duration: 1,
-      desc: 'Una gran espada',
+      desc: 'Sharp long sword',
       image: 'images/sword.gif',
       usedSound: 'sounds/sword.wav'
     },
@@ -50,7 +50,7 @@ var game = {
         image: 'images/fist.jpg',
         usedSound: 'sounds/monster-bones-alive.ogg'
       },
-      desc: 'Un esqueleto salvaje',
+      desc: 'Walking skeleton',
       image: 'images/skull.gif',
       usedSound: 'sounds/monster-bones-dies.wav'
     },
@@ -64,7 +64,7 @@ var game = {
         image: 'images/fist.jpg',
         usedSound: 'sounds/monster-orc-alive.wav'
       },
-      desc: 'Un orco lanza llamas',
+      desc: 'An orc throwing fire',
       image: 'images/orc.gif',
       weapon: {
         type: 'weapon',
