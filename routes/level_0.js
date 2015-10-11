@@ -5,6 +5,12 @@ var game = {
   player: {
     health: 10,
     damage: 1,
+    punch: {
+      type: 'punch',
+      damage: 1,
+      desc: 'Punch',
+      image: 'images/fist.jpg'
+    },
     weapon: null,
     image: 'images/potion.jpg',
     sounds: ['sounds/player-dies.wav']
@@ -71,7 +77,12 @@ var game = {
     {
       type: 'minion',
       health: 2,
-      damage: 3,
+      punch: {
+        type: 'punch',
+        damage: 3,
+        desc: 'Punch',
+        image: 'images/fist.jpg'
+      },
       desc: 'A nasty orc.',
       image: 'images/potion.jpg',
       sounds: ['sounds/monster-orc-alive.wav, sounds/monster-orc-dies.wav'],
@@ -79,13 +90,19 @@ var game = {
         type: 'weapon',
         damage: 4,
         duration: 2,
-        desc: 'A waraxe.'
+        desc: 'A waraxe.',
+        image: 'images/palo.jpeg'
       }
     },
     {
       type: 'minion',
       health: 2,
-      damage: 5,
+      punch: {
+        type: 'punch',
+        damage: 5,
+        desc: 'Punch',
+        image: 'images/fist.jpg'
+      },
       desc: 'A terrifying beholder.',
       image: 'images/potion.jpg',
       sounds: ['sounds/monster-mystic-alive.wav, sounds/monster-mystic-dies.wav']
@@ -93,7 +110,12 @@ var game = {
     {
       type: 'minion',
       health: 4,
-      damage: 2,
+      punch: {
+        type: 'punch',
+        damage: 2,
+        desc: 'Punch',
+        image: 'images/fist.jpg'
+      },
       desc: 'A creepy spider.',
       image: 'images/potion.jpg',
       sounds: ['sounds/monster-buzz-alive.wav, sounds/monster-buzz-dies.wav']
@@ -101,7 +123,12 @@ var game = {
     {
       type: 'minion',
       health: 2,
-      damage: 2,
+      punch: {
+        type: 'punch',
+        damage: 2,
+        desc: 'Punch',
+        image: 'images/fist.jpg'
+      },
       desc: 'A weird skeleton.',
       image: 'images/potion.jpg',
       sounds: ['sounds/monster-bones-alive.wav, sounds/monster-bones-dies.wav'],
@@ -115,7 +142,12 @@ var game = {
     {
       type: 'minion',
       health: 5,
-      damage: 1,
+      punch: {
+        type: 'punch',
+        damage: 1,
+        desc: 'Punch',
+        image: 'images/fist.jpg'
+      },
       desc: 'A gigantic cyclops.',
       image: 'images/potion.jpg',
       sounds: ['sounds/monster-humanlike-alive.wav, sounds/monster-humanlike-dies.wav'],
@@ -129,7 +161,12 @@ var game = {
     {
       type: 'boss',
       health: 10,
-      damage: 2,
+      punch: {
+        type: 'punch',
+        damage: 2,
+        desc: 'Punch',
+        image: 'images/fist.jpg'
+      },
       desc: 'A giant Cthulu-like cosmic creature.'
     }
   ]
