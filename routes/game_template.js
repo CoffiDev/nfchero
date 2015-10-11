@@ -1,6 +1,8 @@
 var game = {
   maxHealth: 10,
   time: 10,
+  desc: 'Estas en un laberinto intentando escapar',
+  image: 'images/nothing.jpeg',
 
   player: {
     health: 10,
@@ -14,9 +16,6 @@ var game = {
     usedSound: 'sounds/player-dies.wav'
   },
 
-  desc: 'Estas en un laberinto intentando escapar',
-  image: 'images/nothing.jpeg',
-
   deck: [
     {
       type: 'potion',
@@ -29,16 +28,16 @@ var game = {
       type: 'weapon',
       damage: 2,
       duration: 3,
-      desc: 'Un martillo',
-      image: 'images/hammer.jpeg',
+      desc: 'Un garrote',
+      image: 'images/maze.gif',
       usedSound: 'sounds/mace.wav'
     },
     {
       type: 'weapon',
       damage: 45,
       duration: 1,
-      desc: 'Un hacha',
-      image: 'images/axe.jpeg',
+      desc: 'Una gran espada',
+      image: 'images/sword.gif',
       usedSound: 'sounds/sword.wav'
     },
     {
@@ -65,14 +64,14 @@ var game = {
         image: 'images/fist.jpg',
         usedSound: 'sounds/monster-orc-alive.wav'
       },
-      desc: 'Un orco armado',
+      desc: 'Un orco lanza llamas',
       image: 'images/orc.gif',
       weapon: {
         type: 'weapon',
         damage: 4,
         duration: 2,
-        desc: 'palo',
-        image: 'images/palo.jpeg',
+        desc: 'bola de fuego',
+        image: 'images/fire.gif',
         usedSound: 'sounds/monster-orc-dies.wav'
       }
     },
