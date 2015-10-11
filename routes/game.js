@@ -93,6 +93,7 @@ function play(result, card, game, tagNumber, btnNumber) {
     result.action = "Tomaste un arma";
     if (currentWeapon) {
       result.action = "Cambiaste de arma";
+      result.card = currentWeapon;
     }
   }
 }

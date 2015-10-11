@@ -14,8 +14,7 @@ var game = {
   },
 
   desc: 'Estas en un laberinto intentando escapar',
-  image: 'images/laberinto.jpg',
-  sounds: ['sounds/enter-laberint.mp3', 'sounds/leave-laberint.mp3'],
+  image: 'images/nothing.jpeg',
 
   deck: [
     {
@@ -60,8 +59,8 @@ var game = {
         desc: 'Punch',
         image: 'images/fist.jpg'
       },
-      desc: 'Un esqueleto armado',
-      image: 'images/skull.gif',
+      desc: 'Un orco armado',
+      image: 'images/orc.gif',
       weapon: {
         type: 'weapon',
         damage: 4,
