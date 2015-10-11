@@ -49,7 +49,7 @@ function playAttack(result, card, game, tagNumber, btnNumber) {
     if (escape < 3) {
       result.action = "You could not escape";
     } else {
-      result.action = "You manage to escape";
+      result.action = "You managed to escape";
       result.card = null;
       delete game.justAttacked;
       return;
@@ -79,7 +79,7 @@ function playAttack(result, card, game, tagNumber, btnNumber) {
   } else if (card.health < 1){
     result.action = "Mataste un enemigo";
     result.sound = card.usedSound;
-  } else if (game.justAttacked) {
+  } else {
     result.canrun = true;
   }
 
