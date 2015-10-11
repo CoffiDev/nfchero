@@ -9,20 +9,17 @@ var game_template = require('./game_template');
 
 var games = {};
 
-router.get('/hola', function(req, res, next) {
-  destroyGame(req);
-  createNewGame(req, res, function() {});
-  res.send({
-    game: req.game
-  });
+router.get('/null/:tag', function(req, res, next) {
+  var game = newGame();
+  games[game.key] = game;
+  req.params.key = game.key;
+  next();
 });
 
-router.use(createNewGame);
-
-router.get('/:tag', function(req, res, next) {
+router.get(':key/:tag', function(req, res, next) {
   var tagNumber = parseInt(req.params.tag);
 
-  var game = req.game;
+  var game = games[req.params.key];
   var card = game.deck[tagNumber];
 
   if (card) {
@@ -57,9 +54,17 @@ router.get('/:tag', function(req, res, next) {
   }
 
 
-  console.log("====================> ", game);
+  var data = {
+    key: game.key,
+    player: game.player,
+    card: card
+  };
 
-  res.send(game);
+  console.log("====================> ", game);
+  console.log("----> ", data);
+
+  res.send(data);
+
 });
 
 
@@ -75,18 +80,18 @@ function attack(attacker, to) {
   }
 }
 
-
 function destroyGame(req) {
-  var sessionId = req.sessionID;
-  games[sessionId] = null;
+  var gameKey = req.params.key;
+  if (gameKey) {
+    games[gameKey] = null;
+  }
 }
 
-function createNewGame(req, res, next) {
-  var sessionId = req.sessionID;
-  if (!games[sessionId]) {
-    games[sessionId] = _.cloneDeep(game_template);
-  }
-  req.game = games[sessionId];
-  next();
+function newGame() {
+  var game = _.cloneDeep(game_template);
+  game.key = require('node-uuid').v4();
+  return game;
 }
+
+
 module.exports = router;

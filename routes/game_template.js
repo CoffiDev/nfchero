@@ -36,13 +36,15 @@ var game = {
       type: 'minion',
       health: 4,
       damage: 2,
-      desc: 'Un pato salvaje'
+      desc: 'Un esqueleto salvaje',
+      image: 'images/skull.gif'
     },
     {
       type: 'minion',
       health: 4,
       damage: 2,
       desc: 'Una gallina corredora',
+      image: 'images/skull.gif'
       weapon: {
         type: 'weapon',
         damage: 4,
