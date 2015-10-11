@@ -160,11 +160,11 @@ var game = {
         damage: 3,
         desc: 'Punch',
         image: 'images/fist.jpg',
-        usedSound: 'sounds/boss-alive.wav'
+        usedSound: 'sounds/monster-lizard-alive.wav'
       },
-      desc: '-NICOLAS CAGE- A cosmic nightmare. Fear.',
-      image: 'images/boss.gif',
-      usedSound: 'sounds/monster-humanlike-dies.wav'
+      desc: '-OCTOGIRL- A cosmic nightmare. Fear.',
+      image: 'images/boss2.gif',
+      usedSound: 'sounds/monster-lizard-dies.wav'
     }
   ]
 }
