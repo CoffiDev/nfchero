@@ -128,6 +128,7 @@ function destroyGame(req) {
 
 function newGame() {
   var game = _.cloneDeep(game_template);
+  // game.deck = _.shuffle(game.deck);
   game.key = require('node-uuid').v4();
   return game;
 }
