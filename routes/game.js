@@ -79,6 +79,7 @@ function playAttack(result, card, game, tagNumber, btnNumber) {
   } else if (card.health < 1){
     result.action = "Killed an enemy";
     result.sound = card.usedSound;
+    result.card = null;
   } else {
     result.canrun = true;
   }
