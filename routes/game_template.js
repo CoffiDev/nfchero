@@ -9,7 +9,7 @@ var game = {
   },
 
   desc: 'Estas en un laberinto intentando escapar',
-  image: 'images/laberinto0.jpg',
+  image: 'images/laberinto.jpg',
   sounds: ['sounds/enter-laberint.mp3', 'sounds/leave-laberint.mp3'],
 
   deck: [
@@ -17,20 +17,22 @@ var game = {
       type: 'potion',
       health: 5,
       desc: 'Un peque;o frasco azul',
-      image: 'images/potion.jpg',
+      image: 'images/potion.png',
       sounds: ['sounds/glu-glu-glu.mp3', 'sounds/meda']
     },
     {
       type: 'weapon',
       damage: 2,
       duration: 3,
-      desc: 'Un lapiz'
+      desc: 'Un martillo',
+      image: 'images/hammer.jpeg'
     },
     {
       type: 'weapon',
       damage: 45,
       duration: 1,
-      desc: 'Una bazuca'
+      desc: 'Un hacha',
+      image: 'images/axe.jpeg'
     },
     {
       type: 'minion',
@@ -43,20 +45,22 @@ var game = {
       type: 'minion',
       health: 4,
       damage: 2,
-      desc: 'Una gallina corredora',
-      image: 'images/skull.gif'
+      desc: 'Un esqueleto armado',
+      image: 'images/skull.gif',
       weapon: {
         type: 'weapon',
         damage: 4,
         duration: 2,
-        desc: 'Huevos'
+        desc: 'palo',
+        image: 'images/palo.jpeg'
       }
     },
     {
       type: 'boss',
       health: 40,
       damage: 20,
-      desc: 'Un wey bien mamado'
+      desc: 'Nicolas Cage',
+      image: 'images/boss.gif'
     }
   ]
 }
