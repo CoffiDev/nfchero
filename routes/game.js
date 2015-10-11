@@ -123,6 +123,8 @@ function play(result, card, game, tagNumber, btnNumber) {
 
       result.action = "Used a healing potion";
       result.sound = card.usedSound;
+    } else {
+      result.action = "Dont need this by now";
     }
   }
 
