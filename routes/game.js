@@ -96,6 +96,8 @@ function play(result, card, game, tagNumber, btnNumber) {
     } else {
       playAttack(result, card, game, tagNumber, btnNumber);
     }
+  } else {
+    delete game.justAttacked;
   }
 
   if (type === 'potion') {
