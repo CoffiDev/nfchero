@@ -5,7 +5,7 @@ var router = express.Router();
 
 var mongoose = require('../models/models');
 
-var game_template = require('./game_template');
+var game_template = require('./level_0');
 
 var games = {};
 
