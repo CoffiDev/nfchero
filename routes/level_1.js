@@ -96,7 +96,7 @@ var game = {
         image: 'images/fist.jpg',
         usedSound: 'sounds/monster-mystic-alive.wav'
       },
-      desc: '-SKELETON MAGE- Not all coals lie quietly in their beds of cold ash.'
+      desc: '-SKELETON MAGE- Not all coals lie quietly in their beds of cold ash.',
       image: 'images/skull.gif',
       usedSound: 'sounds/monster-mystic-dies.wav',
       weapon: {
