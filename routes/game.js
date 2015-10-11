@@ -123,6 +123,8 @@ function play(result, card, game, tagNumber, btnNumber) {
 
       result.action = "Used a healing potion";
       result.sound = card.usedSound;
+    } else {
+      result.action = "Dont need this by now";
     }
   }
 
@@ -165,7 +167,7 @@ function destroyGame(req) {
 
 function newGame() {
   var game = _.cloneDeep(game_template);
-  // game.deck = _.shuffle(game.deck);
+  game.deck = _.shuffle(game.deck);
   game.key = require('node-uuid').v4();
   return game;
 }
