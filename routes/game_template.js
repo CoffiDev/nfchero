@@ -10,12 +10,12 @@ var game = {
       desc: 'Punch',
       image: 'images/fist.jpg'
     },
-    weapon: null
+    weapon: null,
+    usedSound: 'sounds/player-dies.wav'
   },
 
   desc: 'Estas en un laberinto intentando escapar',
   image: 'images/nothing.jpeg',
-  sounds: ['sounds/enter-laberint.mp3', 'sounds/leave-laberint.mp3'],
 
   deck: [
     {
@@ -23,21 +23,23 @@ var game = {
       health: 5,
       desc: 'Un peque;o frasco azul',
       image: 'images/potion.png',
-      sounds: ['sounds/glu-glu-glu.mp3', 'sounds/meda']
+      usedSound: 'sounds/potion-drink.wav'
     },
     {
       type: 'weapon',
       damage: 2,
       duration: 3,
       desc: 'Un martillo',
-      image: 'images/hammer.jpeg'
+      image: 'images/hammer.jpeg',
+      usedSound: 'sounds/mace.wav'
     },
     {
       type: 'weapon',
       damage: 45,
       duration: 1,
       desc: 'Un hacha',
-      image: 'images/axe.jpeg'
+      image: 'images/axe.jpeg',
+      usedSound: 'sounds/sword.wav'
     },
     {
       type: 'minion',
@@ -46,10 +48,12 @@ var game = {
         type: 'punch',
         damage: 2,
         desc: 'Punch',
-        image: 'images/fist.jpg'
+        image: 'images/fist.jpg',
+        usedSound: 'sounds/monster-bones-alive.ogg'
       },
       desc: 'Un esqueleto salvaje',
-      image: 'images/skull.gif'
+      image: 'images/skull.gif',
+      usedSound: 'sounds/monster-bones-dies.wav'
     },
     {
       type: 'minion',
@@ -58,7 +62,8 @@ var game = {
         type: 'punch',
         damage: 2,
         desc: 'Punch',
-        image: 'images/fist.jpg'
+        image: 'images/fist.jpg',
+        usedSound: 'sounds/monster-orc-alive.wav'
       },
       desc: 'Un orco armado',
       image: 'images/orc.gif',
@@ -67,7 +72,8 @@ var game = {
         damage: 4,
         duration: 2,
         desc: 'palo',
-        image: 'images/palo.jpeg'
+        image: 'images/palo.jpeg',
+        usedSound: 'sounds/monster-orc-dies.wav'
       }
     },
     {
@@ -77,10 +83,12 @@ var game = {
         type: 'punch',
         damage: 20,
         desc: 'Punch',
-        image: 'images/fist.jpg'
+        image: 'images/fist.jpg',
+        usedSound: 'sounds/monster-humanlike-alive.wav'
       },
       desc: 'Nicolas Cage',
-      image: 'images/boss.gif'
+      image: 'images/boss.gif',
+      usedSound: 'sounds/monster-humanlike-dies.wav'
     }
   ]
 }

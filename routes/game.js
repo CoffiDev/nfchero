@@ -48,6 +48,7 @@ function playAttack(result, card, game, tagNumber, btnNumber) {
     if (card.weapon && player.health > card.punch.damage) {
       enemyWeapon = card.weapon;
     }
+    result.sound = enemyWeapon.usedSound;
     attack(card, game.player, enemyWeapon);
   } else {
     game.deck[tagNumber] = null;
@@ -56,8 +57,10 @@ function playAttack(result, card, game, tagNumber, btnNumber) {
   if (player.health < 1) {
     result.action = "Estas muerto";
     result.over = true;
+    result.sound = game.player.usedSound;
   } else if (card.health < 1){
     result.action = "Mataste un enemigo";
+    result.sound = card.usedSound;
   }
 }
 
@@ -82,6 +85,7 @@ function play(result, card, game, tagNumber, btnNumber) {
       game.deck[tagNumber] = null;
 
       result.action = "Consumiste una posion";
+      result.sound = card.usedSound;
     }
   }
 
@@ -91,6 +95,8 @@ function play(result, card, game, tagNumber, btnNumber) {
     game.deck[tagNumber] = currentWeapon;
 
     result.action = "Tomaste un arma";
+    result.sound = card.usedSound;
+
     if (currentWeapon) {
       result.action = "Cambiaste de arma";
       result.card = currentWeapon;
