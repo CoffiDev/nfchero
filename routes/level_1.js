@@ -154,7 +154,7 @@ var game = {
     },
     {
       type: 'boss',
-      health: 12,
+      health: 10,
       punch: {
         type: 'punch',
         damage: 3,
