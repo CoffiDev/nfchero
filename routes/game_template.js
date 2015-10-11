@@ -14,7 +14,7 @@ var game = {
   },
 
   desc: 'Estas en un laberinto intentando escapar',
-  image: 'images/laberinto.jpg',
+  image: 'images/nothing.jpeg',
   sounds: ['sounds/enter-laberint.mp3', 'sounds/leave-laberint.mp3'],
 
   deck: [
