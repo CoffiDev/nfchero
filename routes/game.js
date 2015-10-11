@@ -35,13 +35,31 @@ router.get('/:key/:tag/:btn?', function(req, res, next) {
   res.send(result);
 });
 
+function getRandomIntInclusive(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function playAttack(result, card, game, tagNumber, btnNumber) {
   var player = game.player;
-  result.action = "Estas en combate";
+
+  result.action = "Something attacked you";
+
+  if (game.justAttacked && btnNumber === '2') {
+    var escape = getRandomIntInclusive(0, 10);
+    if (escape < 3) {
+      result.action = "You could not escape";
+    } else {
+      result.action = "You manage to escape";
+      result.card = null;
+      delete game.justAttacked;
+      return;
+    }
+  }
 
   var playerWeapon = player.weapon && btnNumber === '1' ?
                         player.weapon : player.punch;
   attack(game.player, card, playerWeapon);
+
 
   if (card.health > 0) {
     var enemyWeapon = card.punch;
@@ -61,18 +79,20 @@ function playAttack(result, card, game, tagNumber, btnNumber) {
   } else if (card.health < 1){
     result.action = "Mataste un enemigo";
     result.sound = card.usedSound;
+  } else if (game.justAttacked) {
+    result.canrun = true;
   }
+
+  game.justAttacked = true;
 }
 
 function play(result, card, game, tagNumber, btnNumber) {
   var player = game.player;
   var type = card.type;
-  result.choose = false;
 
   if (type === 'minion' || type === 'boss') {
     if ( !btnNumber && game.player.weapon) {
       result.action = "Selecciona tu ataque";
-      result.choose = true;
     } else {
       playAttack(result, card, game, tagNumber, btnNumber);
     }
