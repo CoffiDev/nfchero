@@ -41,12 +41,13 @@ function getRandomIntInclusive(min, max) {
 
 function playAttack(result, card, game, tagNumber, btnNumber) {
   var player = game.player;
-
   result.action = "Fighting an enemy";
+  var alredyMoved = false;
 
   if (game.justAttacked && btnNumber === '2') {
     var escape = getRandomIntInclusive(0, 10);
     if (escape < 3) {
+      alredyMoved = true;
       result.action = "Enemy got you";
     } else {
       result.action = "Managed to escape";
@@ -58,8 +59,10 @@ function playAttack(result, card, game, tagNumber, btnNumber) {
 
   var playerWeapon = player.weapon && btnNumber === '1' ?
                         player.weapon : player.punch;
-  attack(game.player, card, playerWeapon);
 
+  if(!alredyMoved) {
+    attack(game.player, card, playerWeapon);
+  }
 
   if (card.health > 0) {
     var enemyWeapon = card.punch;
